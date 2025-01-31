@@ -37,7 +37,7 @@ def make_sketch(img):
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    return render_template('index.html')
 
 @app.route('/sketch', methods=['POST'])
 def sketch():
@@ -56,7 +56,7 @@ def sketch():
         sketch_img_path = os.path.join(app.config['UPLOAD_FOLDER'], sketch_img_name)
         cv2.imwrite(sketch_img_path, sketch_img)
 
-        return render_template('home.html', org_img_name=filename, sketch_img_name=sketch_img_name)
+        return render_template('index.html', org_img_name=filename, sketch_img_name=sketch_img_name)
     else:
         return jsonify({'error': 'Invalid file type'}), 400
 
